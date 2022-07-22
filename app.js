@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const User = require("./src/schema");
+const port = process.env.PORT || 80;
 // starting db
 const startdb = async () => {
   await mongoose.connect(
@@ -50,7 +51,7 @@ app.delete("/:_id", async (req, res) => {
 });
 const startServer = async () => {
   await startdb();
-  app.listen(80, () => {
+  app.listen(port, () => {
     console.log("server started");
   });
 };
