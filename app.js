@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const User = require("./src/schema");
 // starting db
 const startdb = async () => {
-  await mongoose.connect("mongodb://localhost:27017/test");
+  await mongoose.connect(
+    "mongodb+srv://vashu:vashudev143@cluster0.zaq0o.mongodb.net/?retryWrites=true&w=majority"
+  );
 };
 // adding middleware
 app.use(express.json());
