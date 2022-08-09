@@ -17,6 +17,8 @@ app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", [
       "http://192.168.203.149:5500",
       "http://192.168.29.246:5500",
+      ,
+      "http://localhost:5500",
     ]);
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader(
@@ -28,7 +30,11 @@ app.use((req, res, next) => {
 app.use;
 cors({
   credentials: true,
-  origin: ["http://192.168.203.149:5500", "http://192.168.29.246:5500"],
+  origin: [
+    "http://192.168.203.149:5500",
+    "http://192.168.29.246:5500",
+    "http://localhost:5500",
+  ],
   optionsSuccessStatus: 200,
 }),
   // adding middleware
