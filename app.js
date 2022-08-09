@@ -3,22 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 const User = require("./src/schema");
 const port = process.env.PORT || 80;
-const cors = require("cors");
-app.use(cors());
-app.use((req, res, next) => {
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, POST, DELETE, OPTIONS"
-  ),
-    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5500");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin,X-Requested-With, Content-Type, Accept, Authorization"
-  );
+app.all("*", (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://localhost:5500");
   next();
 });
-
 // starting db
 const startdb = async () => {
   await mongoose.connect(
