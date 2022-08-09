@@ -3,26 +3,33 @@ const app = express();
 const mongoose = require("mongoose");
 const User = require("./src/schema");
 const port = process.env.PORT || 80;
+const cors = require("cors");
 // starting db
 const startdb = async () => {
   await mongoose.connect(
     "mongodb+srv://vashu:vashudev143@cluster0.zaq0o.mongodb.net/?retryWrites=true&w=majority"
   );
 };
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PUT, PATCH, POST, DELETE, OPTIONS"
-//   ),
-//     res.setHeader("Access-Control-Allow-Origin", "http://localhost:5500");
-//   res.setHeader("Access-Control-Allow-Credentials", true);
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin,X-Requested-With, Content-Type, Accept, Authorization"
-//   );
-//   next();
-// });
-app.use();
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, POST, DELETE, OPTIONS"
+  ),
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:5500");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:5500",
+    optionsSuccessStatus: 200,
+  })
+);
 // adding middleware
 app.use(express.json());
 // routes
