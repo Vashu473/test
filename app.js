@@ -22,14 +22,15 @@ app.use((req, res, next) => {
   );
   next();
 });
-app.use;
-cors({
-  credentials: true,
-  origin: "http://192.168.203.149:5500",
-  optionsSuccessStatus: 200,
-}),
-  // adding middleware
-  app.use(express.json());
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://192.168.203.149:5500",
+    optionsSuccessStatus: 200,
+  })
+);
+// adding middleware
+app.use(express.json());
 // routes
 app.get("/", async (req, res) => {
   try {
