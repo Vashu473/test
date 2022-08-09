@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const User = require("./src/schema");
 const port = process.env.PORT || 80;
 app.all("*", (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://localhost:5500");
+  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
   next();
 });
 // starting db
