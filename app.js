@@ -14,7 +14,7 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Methods",
     "GET, POST, PUT, PATCH, POST, DELETE, OPTIONS"
   ),
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", "http://192.168.203.149:5500");
   res.setHeader("Access-Control-Allow-Credentials", true);
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 app.use;
 cors({
   credentials: true,
-  origin: "*",
+  origin: "http://192.168.203.149:5500",
   optionsSuccessStatus: 200,
 }),
   // adding middleware
