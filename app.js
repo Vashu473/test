@@ -4,28 +4,27 @@ const mongoose = require("mongoose");
 const User = require("./src/schema");
 const port = process.env.PORT || 80;
 const cors = require("cors");
+app.use(cors());
+app.use((req, res, next) => {
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, PATCH, POST, DELETE, OPTIONS"
+  ),
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3001");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin,X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
+
 // starting db
 const startdb = async () => {
   await mongoose.connect(
     "mongodb+srv://vashu:vashudev143@cluster0.zaq0o.mongodb.net/?retryWrites=true&w=majority"
   );
 };
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,PATCH,DELETE");
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "Content-Type",
-    "Authorization"
-  );
-  next();
-});
-
-app.use(
-  cors({
-    origin: "http://localhost:5500",
-  })
-);
 // adding middleware
 app.use(express.json());
 // routes
