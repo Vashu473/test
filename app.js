@@ -10,11 +10,26 @@ const startdb = async () => {
     "mongodb+srv://vashu:vashudev143@cluster0.zaq0o.mongodb.net/?retryWrites=true&w=majority"
   );
 };
-app.use(
-  cors({
-    origin: "http://192.168.1.14:5500/",
-  })
-);
+
+const corsOptions = { origin: process.env.URL || "*", credentials: true };
+
+app.use(cors(corsOptions));
+
+//Cors Configuration - Start
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested, Content-Type, Accept Authorization"
+  );
+  if (req.method === "OPTIONS") {
+    res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, DELETE");
+    return res.status(200).json({});
+  }
+  next();
+});
+//Cors Configuration - End
+
 // adding middleware
 app.use(express.json());
 // routes
