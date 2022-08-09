@@ -3,13 +3,6 @@ const app = express();
 const mongoose = require("mongoose");
 const User = require("./src/schema");
 const port = process.env.PORT || 80;
-const cors = require("cors");
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-);
 // starting db
 const startdb = async () => {
   await mongoose.connect(
