@@ -29,6 +29,7 @@ app.use(express.json());
 // routes
 app.get("/", async (req, res) => {
   try {
+    res.setHeader("Access-Control-Allow-Origin", "http://192.168.1.14:5500/");
     const user = await User.find({});
     return res.json({ data: user, status: true });
   } catch (error) {
