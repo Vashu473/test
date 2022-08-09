@@ -23,13 +23,7 @@ const startdb = async () => {
 //   );
 //   next();
 // });
-app.use(
-  cors({
-    credentials: true,
-    origin: "http://localhost:5500",
-    optionsSuccessStatus: 200,
-  })
-);
+app.use(cors());
 // adding middleware
 app.use(express.json());
 // routes
