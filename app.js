@@ -3,12 +3,14 @@ const app = express();
 const mongoose = require("mongoose");
 const User = require("./src/schema");
 const port = process.env.PORT || 80;
+const cors = require("cors");
 // starting db
 const startdb = async () => {
   await mongoose.connect(
     "mongodb+srv://vashu:vashudev143@cluster0.zaq0o.mongodb.net/?retryWrites=true&w=majority"
   );
 };
+app.use(cors());
 // adding middleware
 app.use(express.json());
 // routes
