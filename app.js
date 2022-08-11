@@ -10,9 +10,11 @@ const startdb = async () => {
     "mongodb+srv://vashu:vashudev143@cluster0.zaq0o.mongodb.net/?retryWrites=true&w=majority"
   );
 };
-const corsOptions = { origin: process.env.URL || "*", credentials: true };
 
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: "*",
+  credentials: true
+}));
 
 //Cors Configuration - Start
 app.use((req, res, next) => {
